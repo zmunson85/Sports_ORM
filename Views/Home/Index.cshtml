@@ -1,0 +1,74 @@
+﻿<div class="card mb-3">
+    <div class="card-header text-light bg-dark">
+        Sports ORM
+    </div>
+    <div class="card-body">
+        <p>Using the SportsORM, complete all the following queries and show their results in <a href="/level_1">Level
+                1</a>, <a href="/level_2">Level 2</a>, and <a href="/level_3">Level 3</a>. The purpose of this
+            assignment is to practice using LINQ and Entity Framework to make queries on a pre-existing database. Your
+            goal for this assignment is to modify Controllers/HomeController.cs to display the information in
+            Level1.cshtml, Level2.cshtml, and Level3.cshtml with the correct data.</p>
+        <p><strong>Hint:</strong> use ViewBag to pass the data to the Razor templates.</p>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <pre class="prettyprint">
+// Inside of HomeController.cs
+[HttpGet("")]
+public IActionResult Index()
+&#123;
+    ViewBag.BaseballLeagues = context.Leagues
+        .Where(l => l.Sport.Contains("Baseball"))
+        .ToList();
+    return View();
+&#125;
+                </pre>
+                <pre class="prettyprint">
+&lt;!-- Inside of Index.cshtml --&gt;
+&lt;table class="table table-striped"&gt;
+    &lt;tr&gt;
+        &lt;th&gt;League Name&lt;/th&gt;
+        &lt;th&gt;League Sport&lt;/th&gt;
+    &lt;/tr&gt;
+    &#64;foreach(var l in ViewBag.BaseballLeagues)
+    &#123;
+        &lt;tr&gt;
+            &lt;td&gt;&#64;l.Name&lt;/td&gt;
+            &lt;td&gt;&#64;l.Sport&lt;/td&gt;
+        &lt;/tr&gt;
+    &#125;
+&lt;/table&gt;
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h3>All Baseball Leagues</h3>
+                <table class="table table-striped">
+                    <tr>
+                        <th>League Name</th>
+                        <th>League Sport</th>
+                    </tr>
+                    @foreach (var l in ViewBag.BaseballLeagues)
+                    {
+                        <tr>
+                            <td>@l.Name</td>
+                            <td>@l.Sport</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>

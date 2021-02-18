@@ -1,0 +1,91 @@
+<div class="card">
+    <div class="card-header bg-dark text-light">Level 3</div>
+    <div class="card-body">
+        <p>Using the SportsORM, complete all the following queries and show their results on Level3.cshtml.</p>
+        <ol>
+            <li>...all teams, past and present, that Samuel Evans has played with</li>
+            <li>...all players, past and present, with the Manitoba Tiger-Cats</li>
+            <li>...all players who were formerly (but aren't currently) with the Wichita Vikings</li>
+            <li>...every team that Jacob Gray played for before he joined the Oregon Colts</li> 
+            <li>...everyone named "Joshua" who has ever played in the Atlantic Federation of Amateur Baseball Players
+            </li>
+            <li>...all teams that have had 12 or more players, past and present.</li>
+            <li>...all players, sorted by the number of teams they've played for</li>
+        </ol>
+        <h3>all teams, past and present, that Samuel Evans has played with</h3>
+        <table class="table table-info">
+            <tr>
+                <th>Team Name</th>
+                <th>Team Location</th>
+            </tr>
+            @foreach (var l in ViewBag.samEvans)
+            {
+                    <tr>
+                        <td>@l.TeamName</td>
+                        <td>@l.Location</td>
+                    </tr>
+
+            }
+        </table>
+        <h3>all players, past and present, with the Manitoba Tiger-Cats</h3>
+        <table class="table table-info">
+            <tr>
+                <th>Player First Name</th>
+                <th>Player Last Name</th>
+            </tr>
+            @foreach (var l in ViewBag.tigerPlayers)
+            {
+                    <tr>
+                        <td>@l.FirstName</td>
+                        <td>@l.LastName</td>
+                    </tr>
+
+            }
+        </table>
+        <h3>all players who were formerly (but aren't currently) with the Wichita Vikings</h3>
+        <table class="table table-info">
+            <tr>
+                <th>Player First Name</th>
+                <th>Player Last Name</th>
+            </tr>
+            @foreach (var l in ViewBag.xVikings)
+            {
+                    <tr>
+                        <td>@l.FirstName</td>
+                        <td>@l.LastName</td>
+                    </tr>
+
+            }
+        </table>
+        <h3>every team that Jacob Gray played for before he joined the Oregon Colts</h3>
+        <table class="table table-info">
+            <tr>
+                <th>Team Name</th>
+                <th>Team Location</th>
+            </tr>
+            @foreach (var l in ViewBag.xTeamJacob)
+            {
+                    <tr>
+                        <td>@l.TeamName</td>
+                        <td>@l.Location</td>
+                    </tr>
+
+            }
+        </table>
+        <h3>everyone named "Joshua" who has ever played in the Atlantic Federation of Amateur Baseball Players</h3>
+        <table class="table table-info">
+            <tr>
+                <th>Player First Name</th>
+                <th>Player Last Name</th>
+            </tr>
+            @foreach (var l in ViewBag.teamJoshua)
+            {
+                    <tr>
+                        <td>@l.FirstName</td>
+                        <td>@l.LastName</td>
+                    </tr>
+
+            }
+        </table>
+    </div>
+</div>
